@@ -264,21 +264,12 @@ header{
             @include m{
                 left: 0;
             }
-            // @include position-t-l( absolute, 0,  25.36%);
-    
-        }
-        .group2{
-            // margin: 0 14.42%;
-            // margin: 0 12.06% 0 14.42%;
         }
         .group3{
             left: 14.42%;
             @include m{
                 left: 0;
             }
-            // @include position-t-l( absolute, 0,  67.9%);
-    
-            
         }
     }
 }
@@ -290,7 +281,7 @@ header{
     .title{
         opacity: 0;
         display: inline-block;
-        font-size: $fontSize-title2;
+        // font-size: $fontSize-title2;
         position: relative;
         height: 13.98%;
         color: map-get($color, 'p');
@@ -356,7 +347,7 @@ header{
         @include m {
             margin-bottom: 40px;
             margin-top: 0px;
-            z-index: 1;
+            z-index: 0;
             opacity: 1 !important;
         }
     }
@@ -497,7 +488,7 @@ header{
         }
     }
 }
-#section4{
+#section9{
     @include m {
         min-height: calc(100vh - 100px);
     }

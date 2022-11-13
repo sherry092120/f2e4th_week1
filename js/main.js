@@ -75,8 +75,13 @@ $(document).ready(function(){
                 scrollTrigger: st1
             })
             
-            let tlFirst = gsap.timeline({
-                scrollTrigger: st1
+            const tlFirst = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#section1",
+                    pin: true,
+                    // markers: true,
+                    scrub: true,
+                },
             });
             tlFirst.to('.text-ready', {  // 1.ready文字消失
                 opacity: 0,
@@ -224,7 +229,7 @@ $(document).ready(function(){
 
             const tlLast = gsap.timeline({
                 scrollTrigger: {
-                    trigger: "#section4",
+                    trigger: "#section9",
                     pin: true,
                     // markers: true,
                     scrub: true,
@@ -338,7 +343,7 @@ $(document).ready(function(){
                 opacity: 0,
             })
             // .to(['.bottom-layer .join-group'], {
-            .to(['#section4 .join-group'], {
+            .to(['#section9 .join-group'], {
                 opacity: 1,
             })
         },
@@ -394,13 +399,17 @@ $(document).ready(function(){
                 height: '90.75px', 
             },"<").to('#character_team', {
                 height: '79.5px',
+            },"<").to('#section2 .title', {
+                zIndex: 1,
             },"<").from('.question1', {  // 1. question1 左入
                 x: -600,
                 y: -400,
             }).from('.question2', {  // 2. question2 顯示
                 opacity: 0,
                 y: -100,
-            }).from('.question3', {  // 3. question3 右入
+            }).to('#section2 .title', {
+                zIndex: 0,
+            },"<").from('.question3', {  // 3. question3 右入
                 x: 600,
                 y: -200,
             })
@@ -433,7 +442,7 @@ $(document).ready(function(){
 
             const tlLastM = gsap.timeline({
                 scrollTrigger: {
-                    trigger: "#section4",
+                    trigger: "#section9",
                     start: 'top center',
                     end: '65% center',
                     // markers: true,

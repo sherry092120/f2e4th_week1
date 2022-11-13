@@ -325,7 +325,6 @@ header .img-user {
 #section2 .title, #section3 .title {
   opacity: 0;
   display: inline-block;
-  font-size: 60px;
   position: relative;
   height: 13.98%;
   color: #007FAB;
@@ -403,7 +402,7 @@ header .img-user {
   #section2 .title {
     margin-bottom: 40px;
     margin-top: 0px;
-    z-index: 1;
+    z-index: 0;
     opacity: 1 !important;
   }
 }
@@ -577,11 +576,11 @@ header .img-user {
 }
 
 @media (max-width: 767px) {
-  #section4 {
+  #section9 {
     min-height: calc(100vh - 100px);
   }
 }
-#section4 .join-group {
+#section9 .join-group {
   position: absolute;
   top: 11.48%;
   left: 50%;
@@ -589,7 +588,7 @@ header .img-user {
   opacity: 0;
 }
 @media (max-width: 767px) {
-  #section4 .join-group {
+  #section9 .join-group {
     position: relative;
     top: 0;
     left: 0;
@@ -597,29 +596,29 @@ header .img-user {
     opacity: 1 !important;
   }
 }
-#section4 .join-group > div, #section4 .join-group > img {
+#section9 .join-group > div, #section9 .join-group > img {
   display: block;
   margin: 0 auto;
 }
-#section4 .join-group .img-logo {
+#section9 .join-group .img-logo {
   height: 35.8vh;
   min-height: 214.8px;
 }
 @media (max-width: 767px) {
-  #section4 .join-group .img-logo {
+  #section9 .join-group .img-logo {
     width: 226px;
     height: auto;
     min-height: 0;
     margin-top: 100px;
   }
 }
-#section4 .join-group .hand {
+#section9 .join-group .hand {
   height: 10.21vh;
   margin: 2.67vh auto 0.55vh auto;
   min-height: 60px;
 }
 @media (max-width: 767px) {
-  #section4 .join-group .hand {
+  #section9 .join-group .hand {
     width: 46.5px;
     height: auto;
     min-height: 0;
@@ -627,18 +626,18 @@ header .img-user {
     margin-bottom: 3px;
   }
 }
-#section4 .join-group .btn-join {
+#section9 .join-group .btn-join {
   height: 8.61vh;
   min-height: 51.6px;
 }
 @media (max-width: 767px) {
-  #section4 .join-group .btn-join {
+  #section9 .join-group .btn-join {
     width: 84px;
     height: auto;
     min-height: 0;
   }
 }
-#section4 .join-group .text {
+#section9 .join-group .text {
   font-size: 60px;
   font-weight: bold;
   color: #007FAB;
@@ -646,22 +645,22 @@ header .img-user {
   margin-top: 1.85vh;
 }
 @media (max-width: 1440px) {
-  #section4 .join-group .text {
+  #section9 .join-group .text {
     font-size: 40px;
   }
 }
 @media (max-width: 1199px) {
-  #section4 .join-group .text {
+  #section9 .join-group .text {
     font-size: 35px;
   }
 }
 @media (max-width: 991px) {
-  #section4 .join-group .text {
+  #section9 .join-group .text {
     font-size: 28px;
   }
 }
 @media (max-width: 767px) {
-  #section4 .join-group .text {
+  #section9 .join-group .text {
     font-size: 28px;
     margin-top: 20px;
   }
