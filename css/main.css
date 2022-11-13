@@ -99,12 +99,13 @@ header .img-user {
 
 /* 右下.btn-join-group區 ___________________________________________________*/
 .btn-join-group {
+  z-index: 2;
+  text-align: center;
+  cursor: pointer;
   position: fixed;
   bottom: 1.85%;
   right: 1.85%;
   transform: translate(0, 0);
-  text-align: center;
-  cursor: pointer;
 }
 @media (max-width: 767px) {
   .btn-join-group {
@@ -129,6 +130,7 @@ header .img-user {
 
 /* 左下.map區 ___________________________________________________*/
 .map {
+  z-index: 2;
   position: fixed;
   bottom: 2.78vmin;
   left: 4.63%;
@@ -144,6 +146,19 @@ header .img-user {
   height: 13vh;
   min-width: 119.34px;
   min-height: 78px;
+}
+.map svg #flag1, .map svg #flag2 {
+  fill: #007FAB;
+}
+.map svg #flag3 {
+  stroke: #007FAB;
+}
+.map .img-now {
+  height: 2.7vh;
+  min-height: 16.2px;
+  position: absolute;
+  top: 29%;
+  left: 0;
 }
 
 /* upper-layer區 ___________________________________________________*/
@@ -825,30 +840,6 @@ header .img-user {
     height: 22px;
     min-height: 0;
     bottom: 225px;
-  }
-}
-.bottom-layer .light-red {
-  right: 17.85vh;
-}
-@media (max-width: 767px) {
-  .bottom-layer .light-red {
-    right: 84px;
-  }
-}
-.bottom-layer .light-yellow {
-  right: 11.73vh;
-}
-@media (max-width: 767px) {
-  .bottom-layer .light-yellow {
-    right: 56px;
-  }
-}
-.bottom-layer .light-green {
-  right: 5.865vh;
-}
-@media (max-width: 767px) {
-  .bottom-layer .light-green {
-    right: 28px;
   }
 }
 .bottom-layer .text-ready {

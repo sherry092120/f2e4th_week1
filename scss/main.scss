@@ -81,9 +81,10 @@ header{
 
 /* 右下.btn-join-group區 ___________________________________________________*/
 .btn-join-group{
-    @include position-b-r(fixed, 1.85%, 1.85%);
+    z-index: 2;
     text-align: center;
     cursor: pointer;
+    @include position-b-r(fixed, 1.85%, 1.85%);
     @include m {
         display: none;
     }
@@ -107,6 +108,7 @@ header{
 
 /* 左下.map區 ___________________________________________________*/
 .map{
+    z-index: 2;
     @include position-b-l(fixed, 2.78vmin, 4.63%);
     @include m {
         display: none;
@@ -116,6 +118,33 @@ header{
         height: 13vh;
         min-width: calc(600px * 0.13 * 1.53);
         min-height: calc(600px * 0.13);
+        #flag1, #flag2{
+            fill: #007FAB;
+        }
+        #flag3{
+            stroke: #007FAB;
+        }
+    }
+    .img-now{
+        height: 2.7vh;
+        min-height: calc(600px * 0.027);
+        position: absolute;
+        top: 29%;
+        left: 0;
+        // top: 0%;  ----- 點2
+        // left: 16%;
+        // top: 5%;   ----- 點3
+        // left: 44%;
+        // top: 5%;
+        // left: 76%;
+        // top: 34%;
+        // left: 71%;
+        // top: 49%;
+        // left: 49%;
+        // top: 69%;
+        // left: 31%;
+        // top: 60%;
+        // left: 10%; ----- 點8
     }
 }
 
@@ -674,24 +703,24 @@ header{
             bottom: 225px;
         }
     }
-    .light-red{
-        right: calc( 10vh * 2.55 * 0.7);
-        @include m {
-            right: 84px;
-        }
-    }
-    .light-yellow{
-        right: calc( 10vh * 2.55 * 0.46);
-        @include m {
-            right: 56px;
-        }
-    }
-    .light-green{
-        right: calc( 10vh * 2.55 * 0.23);
-        @include m {
-            right: 28px;
-        }
-    }
+    // .light-red{
+    //     right: calc( 10vh * 2.55 * 0.7);
+    //     @include m {
+    //         right: 84px;
+    //     }
+    // }
+    // .light-yellow{
+    //     right: calc( 10vh * 2.55 * 0.46);
+    //     @include m {
+    //         right: 56px;
+    //     }
+    // }
+    // .light-green{
+    //     right: calc( 10vh * 2.55 * 0.23);
+    //     @include m {
+    //         right: 28px;
+    //     }
+    // }
     .text-ready{
         font-size: 3vmin;
         width: calc( 10vh * 2.55 );

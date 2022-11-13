@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    // 標題背景 
     $('.img-talking-c').attr('src','./img/bg_talking_c.png');
     $('.img-talking-l').attr('src','./img/bg_talking_l.png');
     $('.img-talking-r').attr('src','./img/bg_talking_r.png');
@@ -10,10 +11,9 @@ $(document).ready(function(){
         $(this).parents('.btn-group').find('.img-hand').css('opacity',0)
     });
     
-    // Logo(header、第一屏，小版互換)
-    let width = document.body.clientWidth;
-    // let height = document.body.clientHeight;
-    function logoImgChange(w){
+    // Logo(header、第一屏，小版互換)、紅綠燈css
+    function logoImgChange(w,h){
+        console.log(w,h)
         if(w < 768){
             $('.img-logo-big').attr('src','./img/logo01.png');
             $('.img-logo-small').attr('src','./img/logo02.png');
@@ -25,16 +25,32 @@ $(document).ready(function(){
             $('.img-question1').attr('src','./img/question_1.png');
             $('.img-question3').attr('src','./img/question_3.png');
         }
+        if(h > 700 && w > 767){
+            console.log('A')
+            $('.light-red').css('right','calc( 10vh * 2.55 * 0.7 )');
+            $('.light-yellow').css('right','calc( 10vh * 2.55 * 0.46 )');
+            $('.light-green').css('right','calc( 10vh * 2.55 * 0.23 )');
+        }else if(h <= 700 && w > 767){
+            console.log('B')
+            $('.light-red').css('right','calc( 60px * 2.55 * 0.7 )');
+            $('.light-yellow').css('right','calc( 60px * 2.55 * 0.46 )');
+            $('.light-green').css('right','calc( 60px * 2.55 * 0.23 )');
+        }else{
+            $('.light-red').css('right','84px');
+            $('.light-yellow').css('right','56px');
+            $('.light-green').css('right','28px');
+        }
     }
 
-    logoImgChange(width);
+    let width = document.body.clientWidth;
+    let height = document.querySelector('.bottom-layer').clientHeight;
+    logoImgChange(width,height);
+
     $( window ).resize(function(){
         let width = document.body.clientWidth;
-        logoImgChange(width);
+        let height = document.querySelector('.bottom-layer').clientHeight;
+        logoImgChange(width,height);
     })
-
-
-
 
 
     gsap.registerPlugin(ScrollTrigger);
@@ -43,8 +59,7 @@ $(document).ready(function(){
             // -------------------------------------------------------------------------------------第1屏
             // scrollTrigger，第1屏scroll後觸發
             let st1 = {
-                trigger: "#trigger02",  //觸發得物件
-                // endTrigger: '#trigger03',
+                trigger: "#section2",  //觸發得物件
                 start: "top bottom",
                 end: "bottom top", 
                 // markers: true, // 顯示標記
@@ -130,6 +145,10 @@ $(document).ready(function(){
             .to('.img-tree', {
                 y: '-5%',
             },"<")
+            .to('.img-now', { // 跑到點2
+                top: '0%',
+                left: '16%',
+            },"<")
             tlSecond.from(".question1", { xPercent: "-100", opacity: 0 })
             .to('.img-tree', {
                 y: '0%',
@@ -160,7 +179,7 @@ $(document).ready(function(){
                     start: 'top top',
                     // end: 'bottom center',
                     pin: true,
-                    markers: true,
+                    // markers: true,
                     scrub: true,
                 },
             });
@@ -174,15 +193,19 @@ $(document).ready(function(){
             .to('#character_team', {
                 height: '48.8%',
             },"<")
+            .to('.img-now', { // 跑到點3
+                top: '5%',
+                left: '44%',
+            },"<")
             .to('.img-cloud01', {
-                left: '-70%',
+                left: '-100%',
                 scale: 3,
-                top: '80%',
+                top: '50%',
             },"<")
             .to('.img-cloud02', {
-                left: '70%',
+                left: '100%',
                 scale: 3,
-                top: '80%',
+                top: '50%',
             },"<")
             .to(['.img-cloud01','.img-cloud02'], {
                 opacity: 1,
@@ -198,6 +221,7 @@ $(document).ready(function(){
 
 
             // -------------------------------------------------------------------------------------最後1屏
+
             const tlLast = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#section4",
@@ -207,22 +231,17 @@ $(document).ready(function(){
                 },
             });
 
-            // 兩朵雲，出現 > 消失
-            tlLast.to(['.img-cloud01','.img-cloud02'], {
-                left: 0,
-                scale: 0,
-                top: 0,
-            })
 
-            const tlLast2 = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#section4",
-                    pin: true,
-                    // markers: true,
-                    scrub: true,
-                },
-            });
-            tlLast2.to('.img-finish', {
+            tlLast.to(['.img-cloud01','.img-cloud02'], { // 兩朵雲，出現 > 消失 -1
+                scale: 1.3,
+                top: '30%',
+            }).to('.img-cloud01', {
+                left: '-40%',
+            },"<")
+            .to('.img-cloud02', {
+                left: '40%',
+            },"<")
+            .to('.img-finish', { // 終點桿出現
                 scale: 1,
                 opacity: 1,
             })
@@ -235,6 +254,34 @@ $(document).ready(function(){
             })
             .to('.img-finishLine-r', {
                 x:' 0%',
+            },"<")
+            .to(['.img-cloud01','.img-cloud02'], { // 兩朵雲，出現 > 消失 -2
+                scale: 1.1,
+                top: '20%',
+            },"<").to('.img-cloud01', {
+                left: '-30%',
+            },"<")
+            .to('.img-cloud02', {
+                left: '30%',
+            },"<")
+            .to('.img-now', { // 跑到點8
+                top: '60%',
+                left: '10%',
+            },"<")
+            .to(['#flag1','#flag2'], { // 旗子變紅色
+                fill: '#FF5136',
+            },"<")
+            .to('#flag3', { 
+                stroke: '#FF5136',
+            },"<")
+            .to(['.img-cloud01','.img-cloud02'], { // 兩朵雲，出現 > 消失 -3
+                scale: .8,
+                top: '10%',
+            },"<").to('.img-cloud01', {
+                left: '-20%',
+            },"<")
+            .to('.img-cloud02', {
+                left: '20%',
             },"<")
             .to('.img-finishLine-l', {
                 x:' -200%',
@@ -253,10 +300,19 @@ $(document).ready(function(){
             .to(['#character_team'], { //team
                 right: "-7%", 
             },"<")
+            .to(['.img-cloud01','.img-cloud02'], { // 兩朵雲，出現 > 消失 -4
+                scale: .6,
+                top: '5%',
+            },"<").to('.img-cloud01', {
+                left: '-10%',
+            },"<")
+            .to('.img-cloud02', {
+                left: '10%',
+            },"<")
             .to(['#character_f2e, #character_ui','#character_team'], { //人物們變大
                 opacity: 0,
             })            
-            .to(['#character_ui'], { //f2e
+            .to(['#character_ui'], { //ui
                 bottom: '15%',
                 scale: 2.2, 
             },"<")
@@ -269,6 +325,11 @@ $(document).ready(function(){
                 right: "-20%", 
                 bottom: '6%',
                 scale: 1.7, 
+            },"<")
+            .to(['.img-cloud01','.img-cloud02'], { // 兩朵雲，出現 > 消失 -5
+                left: 0,
+                scale: 0,
+                top: 0,
             },"<")
             .to('.img-finish', {
                 opacity: 0,
@@ -288,7 +349,7 @@ $(document).ready(function(){
                     trigger: "#section1",
                     start: 'top bottom',
                     end: 'top top',
-                    markers: true,
+                    // markers: true,
                     scrub: true,
                 },
             });
@@ -390,243 +451,5 @@ $(document).ready(function(){
             
         },
     })
-
-
-    window.addEventListener('scroll', function(){
-
-    } )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // gsap.to('.img-road', {
-            //     duration: .5,
-            //     height: '9.6%',
-            //     scrollTrigger: {
-            //         trigger: "#trigger02",  //觸發得物件
-            //         start: "top",
-            //         onLeaveBack: function(){
-            //             gsap.to('.img-road',{
-            //                 duration: .5,
-            //                 height: '12.5%',
-            //             })
-            //         },
-            //     },
-            // });
-            // gsap.to(['#character_f2e, #character_ui'], {
-            //     duration: .5,
-            //     height: '33.89%', 
-            //     scrollTrigger: {
-            //         trigger: "#trigger02",  //觸發得物件
-            //         start: "top",
-            //         onLeaveBack: function(){
-            //             gsap.to(['#character_f2e, #character_ui'],{
-            //                 duration: .5,
-            //                 height: '55.6%',
-            //             })
-            //         },
-            //     },
-        
-            // });
-            // gsap.to('#character_team', {
-            //     duration: .5,
-            //     height: '29.72%',
-            //     scrollTrigger: {
-            //         trigger: "#trigger02",  //觸發得物件
-            //         start: "top",
-            //         onLeaveBack: function(){
-            //             gsap.to('#character_team',{
-            //                 duration: .5,
-            //                 height: '48.8%',
-            //             })
-            //         },
-            //     },
-            // });
-
-
-
-
-    // gsap.registerPlugin(ScrollTrigger);
-    // ScrollTrigger.matchMedia({
-    //     '(min-width:768px)':function(){
-    //         let scrollTrigger2 = {
-    //             trigger: "#trigger02",  //觸發得物件
-    //             start: "top",
-    //             // markers: true, // 顯示標記
-    //         }
-            
-    //         gsap.to('.img-road', {
-    //             duration: .5,
-    //             height: '9.6%',
-    //             scrollTrigger: scrollTrigger2,
-    //         });
-    //         gsap.to('#character_f2e, #character_ui', {
-    //             duration: .5,
-    //             height: '33.89%', 
-    //             scrollTrigger: scrollTrigger2
-        
-    //         });
-    //         gsap.to('#character_team', {
-    //             duration: .5,
-    //             height: '29.72%',
-    //             scrollTrigger: scrollTrigger2
-    //         });
-
-    //         let tlNew = gsap.timeline({
-    //             scrollTrigger: {
-    //                 trigger: "#trigger02",  //觸發得物件
-    //                 // endTrigger: '#trigger03',
-    //                 start: "top bottom",
-    //                 end: "+=500 top", 
-    //                 markers: true, // 顯示標記
-    //                 // pin: true,
-    //                 scrub: true
-    //             }
-    //         });
-
-    //         tlNew.to('#h1', {
-    //             opacity: 1,
-    //         }).to('#h2', {
-    //             opacity: 1,
-    //         }).to('#h1', {
-    //             opacity: 0,
-    //         }).to('#h2', {
-    //             opacity: 0,
-    //         })
-
-    //         // let tlNew2 = gsap.timeline({
-    //         //     scrollTrigger: {
-    //         //         trigger: "#trigger03",  //觸發得物件
-    //         //         endTrigger: '#section3',
-    //         //         start: "top 100px",
-    //         //         end: "bottom bottom-=100px",
-    //         //         markers: true, // 顯示標記
-    //         //         pin: true,
-    //         //         scrub: true
-    //         //     }
-    //         // });
-
-    //         // tlNew2.to('#h3', {
-    //         //     opacity: 1,
-    //         // }).to('#h4', {
-    //         //     opacity: 1,
-    //         // }).to('#h3', {
-    //         //     opacity: 0,
-    //         // }).to('#h4', {
-    //         //     opacity: 0,
-    //         // })
-    //     },
-    //     "(min-width: 576px) and (max-width: 767px)": function() {
-    //         // The ScrollTriggers created inside these functions are segregated and get
-    //         // reverted/killed when the media query doesn't match anymore. 
-    //     },
-    // })
-
-    // const tlNew = gsap.timeline({
-    //     scrollTrigger: {
-    //         trigger: "#trigger02",  //觸發得物件
-    //         endTrigger: '#trigger03',
-    //         // start: "bottom",
-    //         // end: "top",
-    //         markers: true, // 顯示標記
-    //         pin: true,
-    //         scrub: true
-    //     }
-    // });
-
-    // tlNew.to('#h1', {
-    //     opacity: 1,
-    // }).to('#h2', {
-    //     opacity: 1,
-    // }).to('#h2', {
-    //     opacity: 0,
-    // })
-
-    // gsap.to(".box", {
-    //     x: 300,
-    //     duration: 3,
-    //     rotation: 360,
-    //     scrollTrigger: {
-    //         trigger: ".box", //觸發得物件
-    //         start: "top top", // (物件開始位置, 卷軸開始位置) top center bottom px
-    //         end: "+=300", //(物件結束位置, 卷軸結束位置) , 也可以設卷軸捲動多少結束動畫(+=300)
-    //         pin: true, // 物件執行完動畫會跟著卷軸走，類似 fixed-top
-    //         scrub: true, // 物件動畫根據卷軸捲動程度跑
-    //         toggleClass: "active", // 增加移除的class，class名稱須為字串
-    //         markers: true // 顯示標記
-    //     }
-    // })
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //設定全域場景
-    // let controller = new ScrollMagic.Controller();
-    // //固定場景
-    // let sticky = new TimelineMax;
-    // sticky.to('.img-road', 1 , {
-    //     height: '9.6%',
-    // })
-
-    // let sticky2 = new TimelineMax;
-    // sticky2.to('#character_f2e', 1 , {
-    //     height: '33.89%', 
-    // })
-
-    // let sticky3 = new TimelineMax;
-    // sticky3.to('#character_ui', 1 , {
-    //     height: '33.89%', 
-    // })
-
-    // let sticky4 = new TimelineMax;
-    // sticky4.to('#character_team', 1 , {
-    //     height: '29.72%',   
-    // })
-
-    // new ScrollMagic.Scene({
-    //     triggerElement:'#trigger03',
-    //     triggerHook: 0,
-    //     duration:'10%',//四段動畫，故要4倍高度(卷軸跑多少)
-    // }).setPin('main') //固定場景
-    // .setTween([sticky,sticky2,sticky3,sticky4]).addIndicators().addTo(controller);
-
-
-    //class事件.setClassToggle() //取得.section03加入on的class屬性
-    // new ScrollMagic.Scene({
-    //     triggerElement:'#trigger03'
-    // }).setClassToggle('.upper-layer','on').addIndicators().addTo(controller);
-
-
 
 })
