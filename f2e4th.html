@@ -6,53 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F2E - week1 - 視差滾動</title>
 
-    <link rel="stylesheet" href="scrollmagic.css">
     <link rel="stylesheet" href="./css/main.css"> 
-
-    <!-- 導入動畫套件  gsap 2 -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script> -->
-    <!-- 導入  jquery -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <!-- scrollmagic 主要程式 -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script> -->
-    <!-- scrollmagic + gsap  -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script> -->
-    <!-- scrollmagic 觸發點指標顯示 -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script> -->
-    
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script>
     <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
     <script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/TextPlugin.min.js"></script>
     <script src='./js/main.js' ></script>
-    <style>
-        .none{
-            display: none;
-        }
-    </style>
+
 </head>
 <body>
     <nav></nav>
     <main>
 
         <div class="bottom-layer">
-            <img src="./img/bg_cloud01.svg" class="img-cloud01">
-            <img src="./img/bg_cloud02.svg" class="img-cloud02">
-
             <div class="characters">
-                <img src="./img/start.png" class="img-start">
+                <img src="./img/bg_tree_l.png" class="img-tree img-tree-l">
+                <img src="./img/bg_tree_r.png" class="img-tree img-tree-r">
                 <img src="./img/road.svg" class="img-road">
                 <img src="./img/character_f2e.gif" class="img-character" id="character_f2e">
                 <img src="./img/character_ui.gif" class="img-character" id="character_ui">
                 <img src="./img/character_team.gif" class="img-character" id="character_team">
             </div>
-
+            <img src="./img/finishLine_l.png" class="img-finishLine img-finishLine-l">
+            <img src="./img/finishLine_r.png" class="img-finishLine img-finishLine-r">
+        </div>
+        <div class="bottom-layer m">
+            <img src="./img/bg_cloud01.svg" class="img-cloud01">
+            <img src="./img/bg_cloud02.svg" class="img-cloud02">
+            <div class="characters">
+                <img src="./img/start.png" class="img-start">
+                <img src="./img/finish.png" class="img-finish">
+            </div>
             <img src="./img/ready_3.svg" class="light-red img-lights">
             <img src="./img/ready_2.svg" class="light-yellow img-lights">
             <img src="./img/ready_1.svg" class="light-green img-lights">
             <div class="text-ready">ready?</div>
             <img src="./img/ready_frame.svg" class="img-light">
-
         </div>
 
         <div class="upper-layer">
@@ -79,29 +69,78 @@
 
 
             <div id="trigger02"></div>
-            <!-- <section id="section2" style="background-color: rgba(223, 223, 223, 0.753);"> -->
             <section id="section2">
-                <!-- <h1 id="h1">123</h1>
-                <h2 id="h2">456</h2> -->
-                2
+                <div class="title">
+                    <img class="img-talking img-talking-c">
+                    <img class="img-talking img-talking-l">
+                    <img class="img-talking img-talking-r">
+                    <span class="text">你是否也有以下困擾？</span>
+                </div>
+                <div class="questions">
+                    <div class="question question1">
+                        <div class="text-question">羨慕別人的酷酷網頁動畫？</div>
+                        <img src="./img/question_1.png" class="img-question img-question1">
+                    </div>
+                    <div class="question question2">
+                        <div class="text-question">滿足不了同事的許願？</div>
+                        <img src="./img/question_2.png" class="img-question img-question2">
+                    </div>
+                    <div class="question question3">
+                        <div class="text-question">動畫技能樹太雜無從下手？</div>
+                        <img src="./img/question_3.png" class="img-question img-question3">
+                    </div>
+                </div>
             </section>
 
 
             <div id="trigger03"></div>
             <section id="section3">
-                <!-- <h1 id="h3">1223</h1>
-                <h2 id="h4">4256</h2> -->
-                3
+                <div class="title">
+                    <img class="img-talking img-talking-c">
+                    <img class="img-talking img-talking-l">
+                    <img class="img-talking img-talking-r">
+                    <span class="text">本屆主題：互動式網頁設計</span>
+                </div>
+                <div class="desc">以下兩個角色進行攜手合作</div>
+                
+                <div class="btns">
+                    <img src="./img/character_f2e.svg" class="img-character img-character-f2e">
+                    <div class="btn-group btn-group1">
+                        <img src="./img/btn_joinHand.gif" class="img-hand">
+                        <img src="./img/btn_join.png" class="img-btn">
+                        <div class="text">前端工程師</div>
+                    </div>
+                    <div class="btn-group btn-group2">
+                        <img src="./img/btn_joinHand.gif" class="img-hand">
+                        <img src="./img/btn_join.png" class="img-btn">
+                        <div class="text">UI設計師</div>
+                    </div>
+                    <img src="./img/character_ui.svg" class="img-character img-character-ui">
+                    <img src="./img/character_team.svg" class="img-character img-character-team">
+                    <div class="btn-group btn-group3">
+                        <img src="./img/btn_joinHand.gif" class="img-hand">
+                        <img src="./img/btn_join.png" class="img-btn">
+                        <div class="text">團體組</div>
+                    </div>
+                </div>
+
             </section>
 
 
             <div id="trigger04"></div>
-
+            <section id="section4">
+                <div class="join-group">
+                    <img src="./img/logo01.png" class="img-logo">
+                    <img src="./img/btn_joinHand.gif" class="hand">
+                    <img src="./img/btn_join.png" class="btn-join">
+                    <div class="text">立即報名</div>
+                </div>
+            </section>
         </div>
 
         <div class="btn-join-group">
             <div class="text">JOIN</div>
-            <img src="./img/btn_joinHand.png" class="hand">
+            <img src="./img/btn_joinHand.gif" class="hand">
             <img src="./img/btn_join.png" class="btn-join">
         </div>
         

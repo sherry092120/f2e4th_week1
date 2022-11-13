@@ -1,0 +1,120 @@
+﻿@import './_var.scss';
+@mixin xxl {
+    @media ( max-width: 1440px ) {
+        @content;
+    }
+}
+@mixin xl {
+    @media ( max-width: 1199px ) {
+        @content;
+    }
+}
+
+@mixin l {
+    @media ( max-width: 991px ) {
+        @content;
+    }
+}
+
+@mixin m {
+    @media ( max-width: 767px ) {
+        @content;
+    }
+}
+
+@mixin s {
+    @media ( max-width: 575px ) {
+        @content;
+    }
+}
+
+// 矩形___________________________________________________
+@mixin rectangle($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+
+// display: flex___________________________________________________
+@mixin flex-j-ai($justify-content, $align-items, $wrap: nowrap) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-wrap: $wrap;
+}
+@mixin flex-j-ac($justify-content, $align-content, $wrap: nowrap) {
+    display: flex;
+    justify-content: $justify-content;
+    align-content: $align-content;
+    flex-wrap: $wrap;
+}
+@mixin flex-center($wrap: wrap) {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: $wrap;
+}
+@mixin flex-j($justify: center) {
+    display: flex;
+    justify-content: $justify;
+}
+@mixin flex-ac($align-content: flex-start) {
+    display: flex;
+    align-content: $align-content;
+}
+@mixin flex-ai($align-items: flex-start) {
+    display: flex;
+    align-items: $align-items;
+}
+
+
+// position (relative、absolute、fixed)___________________________________________________
+@mixin position-t-l($position: relative, $top: 0, $left: 0, $transform: translate(0,0)) {
+    position: $position;
+    top: $top;
+    left: $left;
+    transform: $transform;
+}
+@mixin position-t-r($position: relative, $top: 0, $right: 0, $transform: translate(0,0)) {
+    position: $position;
+    top: $top;
+    right: $right;
+    transform: $transform;
+}
+@mixin position-b-l($position: relative, $bottom: 0, $left: 0, $transform: translate(0,0)) {
+    position: $position;
+    bottom: $bottom;
+    left: $left;
+    transform: $transform;
+}
+@mixin position-b-r($position: relative, $bottom: 0, $right: 0, $transform: translate(0,0)) {
+    position: $position;
+    bottom: $bottom;
+    right: $right;
+    transform: $transform;
+}
+@mixin position-center($position: relative) {
+    position: $position;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
+
+// 方便除錯用___________________________________________________
+@mixin border($color:red , $width: 1px) {
+    border: $width solid $color;
+}
+@mixin bg($color:rgb(206, 206, 206)) {
+    background-color: $color;
+}
+
+// CSS3跨跨瀏覽器用___________________________________________________
+@mixin prefix($property,$val) {
+    @each $prefix in '' -webkit- -moz- -o- -ms- { 
+        #{$prefix}#{$property}: $val;
+    }
+}
+.sample {
+    @include prefix(transition,4s all ease);
+}
+

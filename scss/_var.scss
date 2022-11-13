@@ -1,0 +1,57 @@
+﻿// font
+// $fontFamily: '思源柔黑體';
+
+$fontSize-title: 32px;
+$fontSize-title2: 60px;
+$fontSize-title3: 44px;
+$fontSize-title4: 32px;
+$fontSize-title5: 24px;
+$fontSize-content: 18px;
+$fontSize-highlight: 24px;
+
+
+$fontSize-xxl-title: 30px;
+$fontSize-xxl-title2: 40px;
+
+$fontSize-xl-title: 28px;
+$fontSize-xl-title2: 35px;
+
+$fontSize-l-title: 20px;
+$fontSize-l-title2: 28px;
+
+$fontSize-mobile-title: 20px;
+$fontSize-mobile-title2: 28px;
+$fontSize-mobile-title3: 24px;
+$fontSize-mobile-title4: 20px;
+$fontSize-mobile-title5: 18px;
+$fontSize-mobile-content: 16px;
+$fontSize-mobile-highlight: 18px;
+
+
+// max-width
+// $max-width: 1920px;
+$max-width: 1440px;
+$max-width-xxl: 1200px;
+$max-width-xl: 992px;
+$max-width-l: 768px;
+
+$min-height-pc: 700px;
+
+
+// color (Primary、Secondary、Highlight、Black)
+// p-l: primary color / light
+// p-d: primary color / dark
+$color:(
+    'p': #007FAB,
+    'p-l': #B0D2DE,
+    'p-d': #003A4F,
+    's': #FFC37D,
+    's-l': #FFE2A9,
+    's-d': #A46039,
+    'h': #FF5136,
+    'h-l': #FFB5A4,
+    'h-d': #CD331A,
+    'b': #000000,
+    'b-l': #666666,
+    'b-d': #333333,
+);
